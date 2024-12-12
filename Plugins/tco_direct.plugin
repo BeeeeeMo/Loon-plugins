@@ -1,0 +1,12 @@
+#!name = t.co direct
+#!desc = t.co 還原回原本的 url, 適用於 Safari
+#!system = iOS,iPadOS,macOS
+
+[Mitm]
+hostname = x.com #,api.x.com
+
+[Script]
+http-response https://x.com/i/api/graphql/.*/(TweetDetail|HomeTimeline) script-path=https://raw.githubusercontent.com/BeeeeeMo/Loon-plugins/refs/heads/main/Scripts/tco_direct.js, timeout=10, requires-body = true
+
+# Chrome 的連結, 可以靠 uBlock 解決就別用 Loon 了吧 XD
+# http-response https://api.x.com/graphql/.*/TweetResultByRestId script-path=https://raw.githubusercontent.com/BeeeeeMo/Loon-plugins/refs/heads/main/Scripts/tco_direct.js, timeout=10, requires-body = true
