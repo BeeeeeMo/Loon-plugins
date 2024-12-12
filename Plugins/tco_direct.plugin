@@ -1,5 +1,6 @@
 #!name = t.co direct
 #!desc = t.co 還原回原本的 url, 適用於 Safari
+#!author = BeeeeeMo.dev
 #!system = iOS,iPadOS,macOS
 
 [Mitm]
