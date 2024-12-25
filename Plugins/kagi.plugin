@@ -1,0 +1,17 @@
+#!name = iOS Kagi search
+#!desc = 替換搜尋 ecosia 引擎為 Kagi 並修復 autocomplete
+#!author = BeeeeeMo.dev
+#!system = iOS,iPadOS,macOS
+
+[Argument]
+session = input,"",tag=KagiSession,desc=Kagi Session
+
+[Mitm]
+hostname = www.ecosia.org,ac.ecosia.org,kagi.com
+
+[Script]
+http-request ^https:\/\/kagi.com script-path=kagi.js,timeout = 10,argument = [{session}],enable=true
+http-response ^https://ac\.ecosia\.org/autocomplete script-path=kagi_ac.js,timeout = 10,argument = [{session}],enable=true
+
+[Rewrite]
+^https:\/\/www\.ecosia\.org\/search 307 https://kagi.com/search
